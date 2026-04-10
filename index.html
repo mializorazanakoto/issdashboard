@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISS Mission Control | Real-time Dashboard</title>
+    <meta name="description" content="Live International Space Station tracking dashboard with real-time orbital parameters and crew manifest.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div class="logo">
+                <span class="pulse"></span>
+                <h1>ISS MISSION OPERATIONS</h1>
+            </div>
+            <div id="live-time" class="time-readout">00:00:00 UTC</div>
+        </header>
+
+        <main>
+            <section id="map-section" class="card">
+                <div id="map"></div>
+                <div class="overlay-stats">
+                    <div class="stat-item">
+                        <label>LATITUDE</label>
+                        <span id="lat-val">0.0000°</span>
+                    </div>
+                    <div class="stat-item">
+                        <label>LONGITUDE</label>
+                        <span id="lon-val">0.0000°</span>
+                    </div>
+                </div>
+            </section>
+
+            <aside id="sidebar">
+                <div id="orbital-params" class="card">
+                    <h2><i class="icon-orbit"></i> ORBITAL PARAMETERS</h2>
+                    <div class="grid-stats">
+                        <div class="stat-box">
+                            <label>ALTITUDE</label>
+                            <span id="alt-val">---</span>
+                            <small>km</small>
+                        </div>
+                        <div class="stat-box">
+                            <label>VELOCITY</label>
+                            <span id="vel-val">---</span>
+                            <small>km/h</small>
+                        </div>
+                        <div class="stat-box">
+                            <label>ORBIT PERIOD</label>
+                            <span id="period-val">---</span>
+                            <small>min</small>
+                        </div>
+                        <div class="stat-box">
+                            <label>VISIBILITY</label>
+                            <span id="vis-val">---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="crew-manifest" class="card">
+                    <h2><i class="icon-crew"></i> CREW MANIFEST</h2>
+                    <div id="crew-list" class="scroll-list">
+                        <div class="loading-spinner">Fetching crew data...</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <div class="connection-status">
+                <span id="status-dot" class="dot green"></span>
+                <span id="status-text">SYSTEMS NOMINAL</span>
+            </div>
+            <div class="footer-info">Live telemetry via WhereTheISS & OpenNotify</div>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
